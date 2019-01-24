@@ -109,7 +109,7 @@ class TLDetector(object):
                 self.cl_stat =1
             self.classifier_state_pub.publish(Int32(self.cl_stat))    
             light_wp = light_wp if state == TrafficLight.RED else -1
-            rospy.logwarn('red light waypoint: {}'.format(light_wp))
+            #rospy.logwarn('red light waypoint: {}'.format(light_wp))
             self.last_wp = light_wp
             self.upcoming_red_light_pub.publish(Int32(light_wp))
         else:
@@ -156,7 +156,7 @@ class TLDetector(object):
 
         # #Get classification
         result = self.light_classifier.get_classification(cv_image)
-        rospy.logwarn('ground truth/prediction: {0}/{1}'.format(COLOR_NAME_MAPPING[light.state], COLOR_NAME_MAPPING[result]))
+        #rospy.logwarn('ground truth/prediction: {0}/{1}'.format(COLOR_NAME_MAPPING[light.state], COLOR_NAME_MAPPING[result]))
         return result
 
     def process_traffic_lights(self):
@@ -197,9 +197,9 @@ class TLDetector(object):
         if closest_light:
         
             state = self.get_light_state(closest_light)
-            rospy.logwarn('closest light state: {}'.format(state))
-            rospy.logwarn('closest stop line index: {}'.format(line_wp_idx))
-            rospy.logwarn('closest ego index: {}'.format(car_wp_idx))
+            #rospy.logwarn('closest light state: {}'.format(state))
+            #rospy.logwarn('closest stop line index: {}'.format(line_wp_idx))
+            #rospy.logwarn('closest ego index: {}'.format(car_wp_idx))
             return line_wp_idx, state
            
         #self.waypoints = None
